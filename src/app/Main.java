@@ -4,15 +4,16 @@ import java.util.Scanner;
 import app.User;
 import java.util.HashMap;
 import java.util.Map;
-import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 
 public class Main {
     public static void main(String[] args) {
 
         User admin = new User("admin", "admin");
-        Map<String, String> users = admin.getList();
-        users.put(admin);
-        System.out.println(admin);
+        Map<String, String> users = new HashMap<String, String>();
+        String admin_name = admin.getUser();
+        String admin_senha = admin.getSenha();
+        users.put(admin_name, admin_senha);
+        System.out.println(users);
 
         while(true) {
             Scanner userEntry = new Scanner(System.in);

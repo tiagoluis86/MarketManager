@@ -15,6 +15,14 @@ public class User {
         this.senha = senha;
     }
 
+    public String getUser(){
+        return user;
+    }
+    public String getSenha(){
+        return senha;
+    }
+
+
 
     public Map<String, String> getList() {
         return users;
