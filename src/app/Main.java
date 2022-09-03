@@ -30,8 +30,19 @@ public class Main {
                 System.out.println("Insira sua senha: ");
                 String senha = userEntry.next();
 
+                System.out.println("Inserido: ");
+                System.out.println(usuario.getClass());
+                System.out.println(senha.getClass());
+                System.out.println("Esperado: ");
+                System.out.println(admin_name.getClass());
+                System.out.println(admin_senha.getClass());
 
-
+                if (usuario.equals(admin_name)  && senha.equals(admin_senha)) {
+                    System.out.println("ACCESS GRANTED AS ADMIN");
+                }
+                else {
+                    System.out.println("INVALID CREDENTIALS");
+                }
 
             }
             else if (login == 2){
@@ -44,6 +55,9 @@ public class Main {
 
 
             /* Menu principal */
+            System.out.println("MAKET MANAGER 2022");
+            System.out.println("O que você deseja fazer?");
+            System.out.println("1 - Ver produtos e estoque / Nova Compra 2 - Ver clientes 3 - Sair");
         }
 
     }

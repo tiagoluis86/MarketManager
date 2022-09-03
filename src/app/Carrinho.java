@@ -13,5 +13,14 @@ public class Carrinho {
         this.preco_total = preco_total;
     }
 
+    public void adicionarCarrinho(){
+
+    }
+    public void exibirCarrinho(){
+
+    }
+ */
+ */
+
 }
 */
