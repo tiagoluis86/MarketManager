@@ -104,10 +104,8 @@ public class Main {
                         System.out.println((index++) + ": " + s);
                     int adicionar_produto = userEntry.nextInt();
 
-                    /* se adicionar_produto for igual a index da lista, adicionar item correspondente */
-                    System.out.println(codigo_produto.get(adicionar_produto) + " adicionado ao carrinho");
 
-                    //System.out.println(lista_preco.containsKey(codigo_produto.get(adicionar_produto)));
+                    //Verifica se o produto digitado contém correspondente na lista_preco e atualiza o valor da compra na tela
 
                     if (lista_preco.containsKey(codigo_produto.get(adicionar_produto))) {
                         Object value = lista_preco.get(codigo_produto.get(adicionar_produto));
@@ -118,17 +116,17 @@ public class Main {
                         System.out.printf(valor_compra + " reais \n");
 
 
-                    } // pega e mostra o valor do produto selecionado
-                    carrinho.getProdutosCarrinho(); // puxa a lista vazia para add produtos no carrinho
+                    }
+                    //Adiciona o produto no carrinho
+                    carrinho.getProdutosCarrinho();
+                    carrinho.produtos_carrinho.add(codigo_produto.get(adicionar_produto));
 
-                    carrinho.produtos_carrinho.add(codigo_produto.get(adicionar_produto)); // add os produtos
-
-
-                    System.out.println("Seu carrinho: ");
+                    System.out.println(codigo_produto.get(adicionar_produto) + " foi adicionado ao carrinho!!!");
+                    System.out.println("Conteúdo do seu carrinho: ");
                     System.out.println(carrinho.produtos_carrinho); // mostra os produtos do carrinho
 
 
-
+                    //Segue para próximo item da compra ou finaliza
                     System.out.printf("1 - Seguir adicionando 2 - Finalizar compra 3 - Cancelar compra");
                     int continuarcompra = userEntry.nextInt();
 
@@ -137,6 +135,10 @@ public class Main {
                     }
                     else if (continuarcompra == 2){
                         System.out.println("Compra finalizada");
+                        System.out.println("Sua compra deu um total de:");
+                        System.out.println(valor_compra + " reais");
+                        System.out.println("Conteúdo do carrinho:");
+                        System.out.println(carrinho.produtos_carrinho);
                         break;
                     }
 
