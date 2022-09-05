@@ -1,5 +1,6 @@
 package app;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import app.User;
 import java.util.HashMap;
@@ -37,6 +38,14 @@ public class Main {
         lista_estoque.put(cafe.getNome(), cafe.getEstoque());
         lista_estoque.put(leite.getNome(), leite.getEstoque());
 
+        List<String> codigo_produto = new ArrayList<>();
+        codigo_produto.add(arroz.getNome());
+        codigo_produto.add(feijao.getNome());
+        codigo_produto.add(cerveja.getNome());
+        codigo_produto.add(cafe.getNome());
+        codigo_produto.add(leite.getNome());
+
+
         /*Define alguns clientes para povoar a base*/
 
         while(true) {
@@ -54,13 +63,6 @@ public class Main {
                 System.out.println("Insira sua senha: ");
                 String senha = userEntry.next();
 
-                System.out.println("Inserido: ");
-                System.out.println(usuario.getClass());
-                System.out.println(senha.getClass());
-                System.out.println("Esperado: ");
-                System.out.println(admin_name.getClass());
-                System.out.println(admin_senha.getClass());
-
                 if (usuario.equals(admin_name)  && senha.equals(admin_senha)) {
                     System.out.println("ACCESS GRANTED AS ADMIN");
                 }
@@ -77,7 +79,6 @@ public class Main {
                 break;
             }
 
-
             /* Menu principal */
             System.out.println("MAKET MANAGER 2022");
             System.out.println("O que você deseja fazer?");
@@ -87,13 +88,48 @@ public class Main {
 
             /* PARTE DE COMPRAS PROPRIAMENTE DITA */
             if (menu == 1){
-                System.out.println("Nome do produto / Preço");
-                System.out.println(lista_preco);
-                System.out.println("Nome do produto / Quantidade em estoque");
-                System.out.println(lista_estoque);
-                System.out.println("1 - Adicionar ao carrinho 2 - Finalizar compra 3 - Cancelar e sair");
+
+                /*cria o objeto carrinho*/
+                Carrinho carrinho = Carrinho.adicionarCarrinho();
+
+                while(true) {
+                    System.out.println("Preço dos produtos:");
+                    System.out.println(lista_preco);
+                    System.out.println("Quantidade em estoque:");
+                    System.out.println(lista_estoque);
+                    System.out.println("Digite o código do produto para adicionar ao carrinho:");
+                    int index = 0;
+                    for (String s : codigo_produto)
+                        System.out.println((index++) + ": " + s);
+                    int adicionar_produto = userEntry.nextInt();
+
+                    /* se adicionar_produto for igual a index da lista, adicionar item correspondente */
+                    System.out.println(codigo_produto.get(adicionar_produto) + " adicionado ao carrinho");
+
+                    System.out.println(lista_preco.containsKey(codigo_produto.get(adicionar_produto)));
+
+                    carrinho.getValorCarrinho();  // puxa o valor do carrinho
+                    carrinho.getProdutosCarrinho(); // puxa a lista vazia para add produtos no carrinho
+
+                    carrinho.produtos_carrinho.add(codigo_produto.get(adicionar_produto));
+                    System.out.println(carrinho.produtos_carrinho); // adiciona ao carrinho e mostra os produtos
 
 
+                    System.out.printf("Parcial do carrinho: $$$ / 1 - Seguir adicionando 2 - Finalizar compra 3 - Cancelar compra");
+                    int continuarcompra = userEntry.nextInt();
+
+                    if (continuarcompra  == 1){
+                        System.out.println("Adicione o próximo produto");
+                    }
+                    else if (continuarcompra == 2){
+                        System.out.println("Compra finalizada");
+                        break;
+                    }
+
+                    else{
+                        break;
+                    }
+                }
             }
 
 

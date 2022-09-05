@@ -1,22 +1,37 @@
-/*package app;
+package app;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Carrinho {
-    String produto;
-    int quantidade;
-    int preco_produto;
-    int preco_total; /* deve vir do objeto Compra
 
-    public Carrinho(String produto, int quantidade, int preco_produto, int preco_total) {
-        this.produto = produto;
-        this.quantidade = quantidade;
-        this.preco_produto = preco_produto;
-        this.preco_total = preco_total;
+    private int valor_carrinho;
+    List<String> produtos_carrinho;
+
+    public Carrinho(int valor_carrinho, List produtos_carrinho){
+        this.valor_carrinho = valor_carrinho;
+        this.produtos_carrinho = produtos_carrinho;
     }
 
-    public void adicionarCarrinho(){
+
+    public static Carrinho adicionarCarrinho(){
+        int valor_carrinho = 0;
+        List<String> produtos_carrinho = new ArrayList<>();
+        return new Carrinho(valor_carrinho, produtos_carrinho);
+    }
+
+    public int getValorCarrinho(){
+        return valor_carrinho;
+    }
+
+    public List getProdutosCarrinho(){
+        return produtos_carrinho;
+    }
+    public void setValorCarrinho(int valor_carrinho){
+        this.valor_carrinho = valor_carrinho;
+    }
+
+    public void exibirCarrinho() {
 
     }
-    public void exibirCarrinho(){
-
-    }
- */
+}
