@@ -4,7 +4,8 @@ Um app de gerenciamento completo para um mercado pequeno
 Como usar
 --------------------------
 
-Rode o Main.java  
+Clone o repositório em sua máquina  
+Execute javac Main.java  
 Você deve criar um usuário novo se não for o Admin  
 
 Opções
