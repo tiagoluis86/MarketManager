@@ -91,6 +91,7 @@ public class Main {
 
                 /*cria o objeto carrinho*/
                 Carrinho carrinho = Carrinho.adicionarCarrinho();
+                int valor_compra =  carrinho.getValorCarrinho();
 
                 while(true) {
                     System.out.println("Preço dos produtos:");
@@ -106,16 +107,29 @@ public class Main {
                     /* se adicionar_produto for igual a index da lista, adicionar item correspondente */
                     System.out.println(codigo_produto.get(adicionar_produto) + " adicionado ao carrinho");
 
-                    System.out.println(lista_preco.containsKey(codigo_produto.get(adicionar_produto)));
+                    //System.out.println(lista_preco.containsKey(codigo_produto.get(adicionar_produto)));
 
-                    carrinho.getValorCarrinho();  // puxa o valor do carrinho
+                    if (lista_preco.containsKey(codigo_produto.get(adicionar_produto))) {
+                        Object value = lista_preco.get(codigo_produto.get(adicionar_produto));
+                        System.out.println("Key : " + codigo_produto.get(adicionar_produto) +" value :"+ value);
+                        int valor_adicionado = (Integer) value;
+                        valor_compra = valor_compra+ valor_adicionado;
+                        System.out.println("Valor parcial da compra: ");
+                        System.out.printf(valor_compra + " reais \n");
+
+
+                    } // pega e mostra o valor do produto selecionado
                     carrinho.getProdutosCarrinho(); // puxa a lista vazia para add produtos no carrinho
 
-                    carrinho.produtos_carrinho.add(codigo_produto.get(adicionar_produto));
-                    System.out.println(carrinho.produtos_carrinho); // adiciona ao carrinho e mostra os produtos
+                    carrinho.produtos_carrinho.add(codigo_produto.get(adicionar_produto)); // add os produtos
 
 
-                    System.out.printf("Parcial do carrinho: $$$ / 1 - Seguir adicionando 2 - Finalizar compra 3 - Cancelar compra");
+                    System.out.println("Seu carrinho: ");
+                    System.out.println(carrinho.produtos_carrinho); // mostra os produtos do carrinho
+
+
+
+                    System.out.printf("1 - Seguir adicionando 2 - Finalizar compra 3 - Cancelar compra");
                     int continuarcompra = userEntry.nextInt();
 
                     if (continuarcompra  == 1){
@@ -127,6 +141,7 @@ public class Main {
                     }
 
                     else{
+                        System.out.println("Compra cancelada");
                         break;
                     }
                 }
