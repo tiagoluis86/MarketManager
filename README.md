@@ -6,7 +6,7 @@ Como usar
 
 Clone o repositório em sua máquina  
 Execute javac Main.java  
-Você deve criar um usuário novo se não for o Admin  
+Você pode logar como administrador (login admin / senha admin) ou criar seu próprio usuário  
 
 Opções
 --------------------------
