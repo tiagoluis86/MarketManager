@@ -1,33 +1,25 @@
-/*package app;
+package app;
 
 public class Clientes {
 
     String nome;
-    int preco;
-    int estoque;
+    String email;
 
-    /* construtor
-    public Clientes(String nome, int preco, int estoque) {
+
+    //constructor
+    public Clientes(String nome, String email) {
         this.nome = nome;
-        this.preco = preco;
-        this.estoque = estoque;
+        this.email = email;
     }
 
 
-    /*getters and setters
+    //getters and setters
     public String getNome(){
         return nome;
     }
-    public int getPreco(){
-        return preco;
-    }
-    public int getEstoque(){
-        return estoque;
-    }
-    public int setEstoque(){
-        this.estoque = estoque;
+    public String getEmail(){
+        return email;
     }
 
 
 }
-*/

@@ -22,6 +22,10 @@ public class User {
         return senha;
     }
 
+    public static User createUser(String nome, String senha){
+        return new User(nome, senha);
+    }
+
 
 
     public Map<String, String> getList() {

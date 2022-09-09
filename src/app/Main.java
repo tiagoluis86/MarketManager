@@ -47,6 +47,18 @@ public class Main {
 
 
         /*Define alguns clientes para povoar a base*/
+        Clientes joao = new Clientes("João da Silva", "joaodasilva@gmail.com");
+        Clientes maria = new Clientes("Maria de Menezes Conceição", "conceicaomaria@bol.com.br");
+        Clientes sergio = new Clientes("Sergio Aparecido", "sergiao@yahoo.com,br");
+        Clientes rosangela = new Clientes("Rosangela da Cunha", "rooocunha@ig.com.br");
+        Clientes israel = new Clientes("Israel Matos", "israelmatos@netsite.com.br");
+
+        Map<String, String> lista_clientes = new HashMap<String, String>();
+        lista_clientes.put(joao.getNome(), joao.getEmail());
+        lista_clientes.put(maria.getNome(), maria.getEmail());
+        lista_clientes.put(sergio.getNome(), sergio.getEmail());
+        lista_clientes.put(rosangela.getNome(), rosangela.getEmail());
+        lista_clientes.put(israel.getNome(), israel.getEmail());
 
         while(true) {
             Scanner userEntry = new Scanner(System.in);
@@ -66,14 +78,30 @@ public class Main {
                 if (usuario.equals(admin_name)  && senha.equals(admin_senha)) {
                     System.out.println("ACCESS GRANTED AS ADMIN");
                 }
+
+                else if  (users.containsKey(usuario)) {
+                    System.out.println("ACCESS GRANTED AS USER");
+                }
                 else {
                     System.out.println("INVALID CREDENTIALS");
+                    break;
                 }
 
             }
             else if (login == 2){
-                break;
                 /* fazer a criação de novo usuario           */
+
+                System.out.println("Insira seu usuário: ");
+                String novo_usuario = userEntry.next();
+
+                System.out.println("Insira sua senha: ");
+                String nova_senha = userEntry.next();
+
+                User user = User.createUser(novo_usuario, nova_senha);
+
+                users.put(novo_usuario, nova_senha);
+                System.out.println(users);
+
             }
             else {
                 break;
@@ -152,7 +180,8 @@ public class Main {
 
             /* Clientes */
             else if (menu == 2){
-                System.out.println("Nome do cliente / Telefone / Endereço");
+                System.out.println("Nome do cliente / Email");
+                System.out.println(lista_clientes);
             }
 
             /* Outras funcionalidades */
