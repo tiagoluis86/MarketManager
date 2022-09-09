@@ -15,7 +15,6 @@ public class Main {
         String admin_name = admin.getUser();
         String admin_senha = admin.getSenha();
         users.put(admin_name, admin_senha);
-        System.out.println(users);
 
         /*Define alguns produtos para povoar a base*/
         Produto arroz = new Produto("arroz", 10, 50);
@@ -63,9 +62,9 @@ public class Main {
         while (true) {
             Scanner userEntry = new Scanner(System.in);
 
-
             /* invocar o login */
-            System.out.println("1 - Já sou cadastrado 2 - Fazer novo cadastro, 3 - Sair : ");
+            System.out.println("MARKET MANAGER 2022");
+            System.out.println("1 - Fazer login 2 - Criar novo cadastro 3 - Sair: ");
             int login = userEntry.nextInt();
 
             if (login == 1) {
@@ -76,7 +75,7 @@ public class Main {
                 String senha = userEntry.next();
 
                 if (usuario.equals(admin_name) && senha.equals(admin_senha)) {
-                    System.out.println("ACCESS GRANTED AS ADMIN");
+                    System.out.println("ACESSO DE ADMINISTRADOR PERMITIDO");
                 } else if (users.containsKey(usuario)) {
 
 
@@ -118,7 +117,7 @@ public class Main {
                 }
 
                 /* Menu principal */
-                System.out.println("MARKET MANAGER 2022");
+                System.out.println("BEM-VINDO AO MARKET MANAGER 2022");
                 System.out.println("O que você deseja fazer?");
                 System.out.println("1 - Fazer compras 2 - Ver clientes (Somente Admin) 3 - Trocar usuário 4 - Sobre 5 - Sair");
                 int menu = userEntry.nextInt();
@@ -132,10 +131,8 @@ public class Main {
                     int valor_compra = carrinho.getValorCarrinho();
 
                     while (true) {
-                        System.out.println("Preço dos produtos:");
-                        System.out.println(lista_preco);
-                        System.out.println("Quantidade em estoque:");
-                        System.out.println(lista_estoque);
+                        System.out.printf("Preços: %s \n", lista_preco);
+                        System.out.printf("Estoque: %s:\n", lista_estoque);
                         System.out.println("Digite o código do produto para adicionar ao carrinho:");
                         int index = 0;
                         for (String s : codigo_produto)
@@ -147,19 +144,17 @@ public class Main {
 
                         if (lista_preco.containsKey(codigo_produto.get(adicionar_produto))) {
                             Object value = lista_preco.get(codigo_produto.get(adicionar_produto));
-                            System.out.println("Key : " + codigo_produto.get(adicionar_produto) + " value :" + value);
+                            System.out.println("Adicionou ao carrinho: " + codigo_produto.get(adicionar_produto) + "\npreço do item: " + value + " reais.");
                             int valor_adicionado = (Integer) value;
                             valor_compra = valor_compra + valor_adicionado;
                             System.out.println("Valor parcial da compra: ");
                             System.out.printf(valor_compra + " reais \n");
                         }
 
-
                         //Adiciona o produto no carrinho
                         carrinho.getProdutosCarrinho();
                         carrinho.produtos_carrinho.add(codigo_produto.get(adicionar_produto));
 
-                        System.out.println(codigo_produto.get(adicionar_produto) + " foi adicionado ao carrinho!!!");
                         System.out.println("Conteúdo do seu carrinho: ");
                         System.out.println(carrinho.produtos_carrinho); // mostra os produtos do carrinho
 
@@ -187,7 +182,8 @@ public class Main {
 
                 /* Clientes */
                 else if (menu == 2) {
-                    System.out.println("Usuário/Senha");
+
+                    System.out.println("Usuários cadastrados e senhas:");
                     System.out.println(users);
                 }
 
