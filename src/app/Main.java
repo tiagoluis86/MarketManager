@@ -46,7 +46,7 @@ public class Main {
         codigo_produto.add(leite.getNome());
 
 
-        /*Define alguns clientes para povoar a base*/
+        /*Define alguns clientes para povoar a base
         Clientes joao = new Clientes("João da Silva", "joaodasilva@gmail.com");
         Clientes maria = new Clientes("Maria de Menezes Conceição", "conceicaomaria@bol.com.br");
         Clientes sergio = new Clientes("Sergio Aparecido", "sergiao@yahoo.com,br");
@@ -58,9 +58,9 @@ public class Main {
         lista_clientes.put(maria.getNome(), maria.getEmail());
         lista_clientes.put(sergio.getNome(), sergio.getEmail());
         lista_clientes.put(rosangela.getNome(), rosangela.getEmail());
-        lista_clientes.put(israel.getNome(), israel.getEmail());
+        lista_clientes.put(israel.getNome(), israel.getEmail());*/
 
-        while(true) {
+        while (true) {
             Scanner userEntry = new Scanner(System.in);
 
 
@@ -75,129 +75,135 @@ public class Main {
                 System.out.println("Insira sua senha: ");
                 String senha = userEntry.next();
 
-                if (usuario.equals(admin_name)  && senha.equals(admin_senha)) {
+                if (usuario.equals(admin_name) && senha.equals(admin_senha)) {
                     System.out.println("ACCESS GRANTED AS ADMIN");
+                } else if (users.containsKey(usuario)) {
+
+
+                    if (users.containsValue(senha)) {
+                        System.out.printf("Acesso permitido. Bem vindo %s ao ", usuario);
+
+                    }
+                   else {
+                        System.out.println("Dados de login inválidos");
+                        continue;
+                    }
+
+
+                } else {
+                    System.out.println("Dados de login inválidos");
+                    continue;
+                }
+            }
+
+            else if (login == 2) {
+                    /* fazer a criação de novo usuario           */
+
+                    System.out.println("Insira seu usuário: ");
+                    String novo_usuario = userEntry.next();
+
+                    System.out.println("Insira sua senha: ");
+                    String nova_senha = userEntry.next();
+
+                    User user = User.createUser(novo_usuario, nova_senha);
+
+                    users.put(novo_usuario, nova_senha);
+                    System.out.printf("Novo usuário cadastrado: %s ", novo_usuario);
+                    System.out.println(users);
+                    continue;
+
+
+                } else {
+                    break;
                 }
 
-                else if  (users.containsKey(usuario)) {
-                    System.out.println("ACCESS GRANTED AS USER");
+                /* Menu principal */
+                System.out.println("MARKET MANAGER 2022");
+                System.out.println("O que você deseja fazer?");
+                System.out.println("1 - Fazer compras 2 - Ver clientes (Somente Admin) 3 - Trocar usuário 4 - Sobre 5 - Sair");
+                int menu = userEntry.nextInt();
+
+
+                /* PARTE DE COMPRAS PROPRIAMENTE DITA */
+                if (menu == 1) {
+
+                    /*cria o objeto carrinho*/
+                    Carrinho carrinho = Carrinho.adicionarCarrinho();
+                    int valor_compra = carrinho.getValorCarrinho();
+
+                    while (true) {
+                        System.out.println("Preço dos produtos:");
+                        System.out.println(lista_preco);
+                        System.out.println("Quantidade em estoque:");
+                        System.out.println(lista_estoque);
+                        System.out.println("Digite o código do produto para adicionar ao carrinho:");
+                        int index = 0;
+                        for (String s : codigo_produto)
+                            System.out.println((index++) + ": " + s);
+                        int adicionar_produto = userEntry.nextInt();
+
+
+                        //Verifica se o produto digitado contém correspondente na lista_preco e atualiza o valor da compra na tela
+
+                        if (lista_preco.containsKey(codigo_produto.get(adicionar_produto))) {
+                            Object value = lista_preco.get(codigo_produto.get(adicionar_produto));
+                            System.out.println("Key : " + codigo_produto.get(adicionar_produto) + " value :" + value);
+                            int valor_adicionado = (Integer) value;
+                            valor_compra = valor_compra + valor_adicionado;
+                            System.out.println("Valor parcial da compra: ");
+                            System.out.printf(valor_compra + " reais \n");
+                        }
+
+
+                        //Adiciona o produto no carrinho
+                        carrinho.getProdutosCarrinho();
+                        carrinho.produtos_carrinho.add(codigo_produto.get(adicionar_produto));
+
+                        System.out.println(codigo_produto.get(adicionar_produto) + " foi adicionado ao carrinho!!!");
+                        System.out.println("Conteúdo do seu carrinho: ");
+                        System.out.println(carrinho.produtos_carrinho); // mostra os produtos do carrinho
+
+
+                        //Segue para próximo item da compra ou finaliza
+                        System.out.printf("1 - Seguir adicionando 2 - Finalizar compra 3 - Cancelar compra");
+                        int continuarcompra = userEntry.nextInt();
+
+                        if (continuarcompra == 1) {
+                            System.out.println("Adicione o próximo produto");
+                        } else if (continuarcompra == 2) {
+                            System.out.println("Compra finalizada");
+                            System.out.println("Sua compra deu um total de:");
+                            System.out.println(valor_compra + " reais");
+                            System.out.println("Conteúdo do carrinho:");
+                            System.out.println(carrinho.produtos_carrinho);
+                            break;
+                        } else {
+                            System.out.println("Compra cancelada");
+                            break;
+                        }
+                    }
                 }
-                else {
-                    System.out.println("INVALID CREDENTIALS");
+
+
+                /* Clientes */
+                else if (menu == 2) {
+                    System.out.println("Usuário/Senha");
+                    System.out.println(users);
+                }
+
+                /* Outras funcionalidades */
+                else if (menu == 3) {
+                    System.out.println("Voltando à tela de login...");
+                } else if (menu == 4) {
+                    System.out.println("MARKET MANAGER 2022");
+                    System.out.println("Feito por Tiago Luis Custódio");
+                    System.out.println("tiagoluis86@outlook.com / 41 987485610");
+                } else {
                     break;
                 }
 
             }
-            else if (login == 2){
-                /* fazer a criação de novo usuario           */
-
-                System.out.println("Insira seu usuário: ");
-                String novo_usuario = userEntry.next();
-
-                System.out.println("Insira sua senha: ");
-                String nova_senha = userEntry.next();
-
-                User user = User.createUser(novo_usuario, nova_senha);
-
-                users.put(novo_usuario, nova_senha);
-                System.out.println(users);
-
-            }
-            else {
-                break;
-            }
-
-            /* Menu principal */
-            System.out.println("MAKET MANAGER 2022");
-            System.out.println("O que você deseja fazer?");
-            System.out.println("1 - Fazer compras 2 - Ver clientes (Only Admin) 3 - Trocar usuário 4 - Sobre 5 - Sair");
-            int menu = userEntry.nextInt();
-
-
-            /* PARTE DE COMPRAS PROPRIAMENTE DITA */
-            if (menu == 1){
-
-                /*cria o objeto carrinho*/
-                Carrinho carrinho = Carrinho.adicionarCarrinho();
-                int valor_compra =  carrinho.getValorCarrinho();
-
-                while(true) {
-                    System.out.println("Preço dos produtos:");
-                    System.out.println(lista_preco);
-                    System.out.println("Quantidade em estoque:");
-                    System.out.println(lista_estoque);
-                    System.out.println("Digite o código do produto para adicionar ao carrinho:");
-                    int index = 0;
-                    for (String s : codigo_produto)
-                        System.out.println((index++) + ": " + s);
-                    int adicionar_produto = userEntry.nextInt();
-
-
-                    //Verifica se o produto digitado contém correspondente na lista_preco e atualiza o valor da compra na tela
-
-                    if (lista_preco.containsKey(codigo_produto.get(adicionar_produto))) {
-                        Object value = lista_preco.get(codigo_produto.get(adicionar_produto));
-                        System.out.println("Key : " + codigo_produto.get(adicionar_produto) +" value :"+ value);
-                        int valor_adicionado = (Integer) value;
-                        valor_compra = valor_compra+ valor_adicionado;
-                        System.out.println("Valor parcial da compra: ");
-                        System.out.printf(valor_compra + " reais \n");
-
-
-                    }
-                    //Adiciona o produto no carrinho
-                    carrinho.getProdutosCarrinho();
-                    carrinho.produtos_carrinho.add(codigo_produto.get(adicionar_produto));
-
-                    System.out.println(codigo_produto.get(adicionar_produto) + " foi adicionado ao carrinho!!!");
-                    System.out.println("Conteúdo do seu carrinho: ");
-                    System.out.println(carrinho.produtos_carrinho); // mostra os produtos do carrinho
-
-
-                    //Segue para próximo item da compra ou finaliza
-                    System.out.printf("1 - Seguir adicionando 2 - Finalizar compra 3 - Cancelar compra");
-                    int continuarcompra = userEntry.nextInt();
-
-                    if (continuarcompra  == 1){
-                        System.out.println("Adicione o próximo produto");
-                    }
-                    else if (continuarcompra == 2){
-                        System.out.println("Compra finalizada");
-                        System.out.println("Sua compra deu um total de:");
-                        System.out.println(valor_compra + " reais");
-                        System.out.println("Conteúdo do carrinho:");
-                        System.out.println(carrinho.produtos_carrinho);
-                        break;
-                    }
-
-                    else{
-                        System.out.println("Compra cancelada");
-                        break;
-                    }
-                }
-            }
-
-
-            /* Clientes */
-            else if (menu == 2){
-                System.out.println("Nome do cliente / Email");
-                System.out.println(lista_clientes);
-            }
-
-            /* Outras funcionalidades */
-            else if (menu == 3){
-                System.out.println("Voltando à tela de login...");
-            }
-            else if (menu == 4){
-                System.out.println("MARKET MANAGER 2022");
-                System.out.println("Feito por Tiago Luis Custódio");
-                System.out.println("tiagoluis86@outlook.com / 41 987485610");
-            }
-            else{
-                break;
-            }
 
         }
-
     }
-}
+
