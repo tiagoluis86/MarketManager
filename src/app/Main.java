@@ -61,6 +61,8 @@ public class Main {
 
         while (true) {
             Scanner userEntry = new Scanner(System.in);
+            String usuario;
+            String senha;
 
             /* invocar o login */
             System.out.println("MARKET MANAGER 2022");
@@ -69,10 +71,10 @@ public class Main {
 
             if (login == 1) {
                 System.out.println("Insira seu usuário: ");
-                String usuario = userEntry.next();
+                usuario = userEntry.next();
 
                 System.out.println("Insira sua senha: ");
-                String senha = userEntry.next();
+                senha = userEntry.next();
 
                 if (usuario.equals(admin_name) && senha.equals(admin_senha)) {
                     System.out.println("ACESSO DE ADMINISTRADOR PERMITIDO");
@@ -117,7 +119,8 @@ public class Main {
                 }
 
                 /* Menu principal */
-                System.out.println("BEM-VINDO AO MARKET MANAGER 2022");
+                System.out.println("MARKET MANAGER 2022");
+                System.out.printf("Sessão aberta para o usuário %s\n", usuario);
                 System.out.println("O que você deseja fazer?");
                 System.out.println("1 - Fazer compras 2 - Ver clientes (Somente Admin) 3 - Trocar usuário 4 - Sobre 5 - Sair");
                 int menu = userEntry.nextInt();
@@ -129,6 +132,8 @@ public class Main {
                     /*cria o objeto carrinho*/
                     Carrinho carrinho = Carrinho.adicionarCarrinho();
                     int valor_compra = carrinho.getValorCarrinho();
+                    carrinho.setUser(usuario);
+                    System.out.printf("Carrinho aberto para o usuário: %s \n", carrinho.getUser());
 
                     while (true) {
                         System.out.printf("Preços: %s \n", lista_preco);
@@ -166,11 +171,13 @@ public class Main {
                         if (continuarcompra == 1) {
                             System.out.println("Adicione o próximo produto");
                         } else if (continuarcompra == 2) {
-                            System.out.println("Compra finalizada");
+                            System.out.println("------------------------------------------------------------");
+                            System.out.printf("Compra finalizada para o usuário: %s \n", carrinho.getUser());
                             System.out.println("Sua compra deu um total de:");
                             System.out.println(valor_compra + " reais");
                             System.out.println("Conteúdo do carrinho:");
                             System.out.println(carrinho.produtos_carrinho);
+                            System.out.println("------------------------------------------------------------");
                             break;
                         } else {
                             System.out.println("Compra cancelada");
