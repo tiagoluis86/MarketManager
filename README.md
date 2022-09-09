@@ -11,10 +11,10 @@ Você pode logar como administrador (login admin / senha admin) ou criar seu pr�
 Opções
 --------------------------
 1 - Fazer compras  
-2 - Ver clientes (só Admin)  
+2 - Ver dados de outros usuários (só Admin)  
 3 - Trocar usuário  
 4 - Sobre  
 
 Features
 -----------------------
-controle de estoque, adicionar produtos, itens ao carrinho, finalizar a compra, ver, adicionar e remover clientes.
+controle de estoque, adicionar produtos, itens ao carrinho, finalizar a compra, ver, adicionar e remover clientes / usuários.
