@@ -22,8 +22,8 @@ Opções
 ![image](https://user-images.githubusercontent.com/70555750/189418622-11d11230-edac-4413-981a-0b9fa904ae56.png)
 
 
-Features
+Features atuais
 -----------------------
-adicionar produtos, itens ao carrinho, finalizar a compra, ver, adicionar usuários, vincular usuário ao carrinho, gerar TXT com resumo da compra
+adicionar produtos ao carrinho, finalizar a compra, ver e adicionar usuários, vincular usuário ao carrinho, gerar TXT com resumo da compra
 
 ![image](https://user-images.githubusercontent.com/70555750/189418647-c454583e-485b-4e9f-9476-0337c3040852.png)
