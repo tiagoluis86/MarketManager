@@ -1,5 +1,5 @@
 # MarketManager
-Um app de gerenciamento completo para um mercado pequeno
+Um app de gerenciamento completo para um mercado pequeno  
 Link da explicação da atividade no youtube: https://youtu.be/PNQkBmAuGwI
 
 Como usar
