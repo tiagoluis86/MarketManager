@@ -16,6 +16,8 @@ public class Main {
         List<User> usernames = new ArrayList<>(); /* essa lista tem funções mais específicas para gerar tabelas relatórios */
         usernames.add(admin);
 
+        List<Carrinho> itens_comprados = new ArrayList<>();
+
         String admin_name = admin.getUser();
         String admin_senha = admin.getSenha();
         users.put(admin_name, admin_senha);
@@ -184,6 +186,8 @@ public class Main {
                             System.out.println("Conteúdo do carrinho:");
                             System.out.println(carrinho.produtos_carrinho);
                             System.out.println("------------------------------------------------------------");
+                            Carrinho compra = new Carrinho(valor_compra, carrinho.getUser(), carrinho.produtos_carrinho);
+                            itens_comprados.add(compra);
                             break;
                         } else {
                             System.out.println("Compra cancelada");
@@ -205,6 +209,10 @@ public class Main {
 
                     Table tabela =new Table(new UsersData(usernames));
                     tabela.print();
+
+                    System.out.println("Compras efetuadas:");
+                    Table tabela_compras = new Table(new ComprasData(itens_comprados));
+                    tabela_compras.print();
                 }
 
                 /* Outras funcionalidades */
