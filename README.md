@@ -33,3 +33,8 @@ Usando o conceito de Interfaces é possível gerar uma tabela com todos os users
 
 ![image](https://user-images.githubusercontent.com/70555750/194613532-f7e2caf6-c4ba-487b-add0-b7c6a35bb022.png)
 
+Também, a partir das interfaces, é possível agora ver o histórico de compras de cada usuário:
+
+![image](https://user-images.githubusercontent.com/70555750/194624002-eab8dcd7-5840-43ae-92d0-40ebe65abda2.png)
+
+
