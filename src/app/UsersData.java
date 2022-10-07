@@ -31,9 +31,9 @@ public class UsersData implements TableData {
             {
             switch (col) {
                 case COL_NOME:
-                    return entry.getKey();
+                    return users.keySet();
                 case COL_SENHA:
-                    return users.entrySet();
+                    return users.values();
             }
         }
         throw new IllegalStateException("Coluna inválida: " + col);
@@ -52,4 +52,5 @@ public class UsersData implements TableData {
     public int getWidth(int col) {
         return col == COL_NOME ? 20 : 7;
     }
+
 }

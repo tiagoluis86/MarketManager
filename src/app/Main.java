@@ -11,7 +11,10 @@ public class Main {
 
         /*Define o usuário admin e a lista com todos os users*/
         User admin = new User("admin", "admin");
+
         Map<String, String> users = new HashMap<String, String>();
+        UsersData userdata = new UsersData(users);
+
         String admin_name = admin.getUser();
         String admin_senha = admin.getSenha();
         users.put(admin_name, admin_senha);
@@ -191,7 +194,9 @@ public class Main {
                 else if (menu == 2) {
 
                     System.out.println("Usuários cadastrados e senhas:");
-                    System.out.println(users);
+
+                    Table tabela_users =new Table(new UsersData(users));
+                    tabela_users.print();
                 }
 
                 /* Outras funcionalidades */
