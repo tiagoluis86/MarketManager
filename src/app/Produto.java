@@ -39,12 +39,4 @@ public class Produto {
         return lista_estoque;
     }
 
-    /*métodos*/
-    public void buscarProduto(){
-
-    }
-    public void listarProduto(){
-
-    }
-
 }

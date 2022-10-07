@@ -42,7 +42,4 @@ public class Carrinho {
         this.valor_carrinho = valor_carrinho;
     }
 
-    public void exibirCarrinho() {
-
-    }
 }

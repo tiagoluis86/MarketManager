@@ -26,8 +26,6 @@ public class User {
         return new User(nome, senha);
     }
 
-
-
     public Map<String, String> getList() {
         return users;
     }

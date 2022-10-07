@@ -53,21 +53,6 @@ public class Main {
         codigo_produto.add(cafe.getNome());
         codigo_produto.add(leite.getNome());
 
-
-        /*Define alguns clientes para povoar a base
-        Clientes joao = new Clientes("João da Silva", "joaodasilva@gmail.com");
-        Clientes maria = new Clientes("Maria de Menezes Conceição", "conceicaomaria@bol.com.br");
-        Clientes sergio = new Clientes("Sergio Aparecido", "sergiao@yahoo.com,br");
-        Clientes rosangela = new Clientes("Rosangela da Cunha", "rooocunha@ig.com.br");
-        Clientes israel = new Clientes("Israel Matos", "israelmatos@netsite.com.br");
-
-        Map<String, String> lista_clientes = new HashMap<String, String>();
-        lista_clientes.put(joao.getNome(), joao.getEmail());
-        lista_clientes.put(maria.getNome(), maria.getEmail());
-        lista_clientes.put(sergio.getNome(), sergio.getEmail());
-        lista_clientes.put(rosangela.getNome(), rosangela.getEmail());
-        lista_clientes.put(israel.getNome(), israel.getEmail());*/
-
         while (true) {
             Scanner userEntry = new Scanner(System.in);
             String usuario;
