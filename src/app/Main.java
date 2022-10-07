@@ -12,8 +12,9 @@ public class Main {
         /*Define o usuário admin e a lista com todos os users*/
         User admin = new User("admin", "admin");
 
-        Map<String, String> users = new HashMap<String, String>();
-        UsersData userdata = new UsersData(users);
+        Map<String, String> users = new HashMap<String, String>(); /*esse map tem funções específicas para login */
+        List<User> usernames = new ArrayList<>(); /* essa lista tem funções mais específicas para gerar tabelas relatórios */
+        usernames.add(admin);
 
         String admin_name = admin.getUser();
         String admin_senha = admin.getSenha();
@@ -112,6 +113,8 @@ public class Main {
                     User user = User.createUser(novo_usuario, nova_senha);
 
                     users.put(novo_usuario, nova_senha);
+                    usernames.add(user);
+
                     System.out.printf("Novo usuário cadastrado: %s ", novo_usuario);
                     System.out.println(users);
                     continue;
@@ -195,8 +198,13 @@ public class Main {
 
                     System.out.println("Usuários cadastrados e senhas:");
 
-                    Table tabela_users =new Table(new UsersData(users));
-                    tabela_users.print();
+                    /*Table tabela_users =new Table(new UsersData(userdata));
+                    tabela_users.print(); */
+
+
+
+                    Table tabela =new Table(new UsersData(usernames));
+                    tabela.print();
                 }
 
                 /* Outras funcionalidades */

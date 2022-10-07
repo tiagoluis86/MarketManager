@@ -9,15 +9,17 @@ public class UsersData implements TableData {
     private static final int COL_NOME = 0;
     private static final int COL_SENHA = 1;
 
-    private Map<String, String> users;
+    /*private Map<String, String> users;*/
+    private List<User> username;
 
-    public UsersData(Map<String, String> users) {
-        this.users = users;
+
+    public UsersData(List<User> username){
+        this.username = username;
     }
 
     @Override
     public int getRows() {
-        return users.size();
+        return username.size();
     }
 
     @Override
@@ -27,15 +29,16 @@ public class UsersData implements TableData {
 
     @Override
     public Object get(int row, int col) {
-        for (Map.Entry<String, String> entry : users.entrySet())
+        User username_data = username.get(row);
             {
-            switch (col) {
-                case COL_NOME:
-                    return users.keySet();
-                case COL_SENHA:
-                    return users.values();
+                switch (col) {
+                    case COL_NOME:
+                        return username_data.getUser();
+                    case COL_SENHA:
+                        return username_data.getSenha();
+                }
             }
-        }
+
         throw new IllegalStateException("Coluna inválida: " + col);
     }
 
