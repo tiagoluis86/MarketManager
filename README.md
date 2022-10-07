@@ -27,3 +27,11 @@ Features atuais
 adicionar produtos ao carrinho, finalizar a compra, ver e adicionar usuários, vincular usuário ao carrinho, gerar TXT com resumo da compra
 
 ![image](https://user-images.githubusercontent.com/70555750/189418647-c454583e-485b-4e9f-9476-0337c3040852.png)
+
+Recém-adicionados
+--------------------------
+
+Usando o conceito de Interfaces é possível gerar uma tabela com todos os users e suas senhas, inclusive o adm, conforme abaixo:
+
+![image](https://user-images.githubusercontent.com/70555750/194613532-f7e2caf6-c4ba-487b-add0-b7c6a35bb022.png)
+
