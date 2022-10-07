@@ -5,6 +5,9 @@ import java.util.Scanner;
 import app.User;
 import java.util.HashMap;
 import java.util.Map;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
@@ -188,8 +191,23 @@ public class Main {
                             System.out.println("------------------------------------------------------------");
                             Carrinho compra = new Carrinho(valor_compra, carrinho.getUser(), carrinho.produtos_carrinho);
                             itens_comprados.add(compra);
-                            break;
-                        } else {
+                            try {
+                                File comprareport = new File(usuario + ".txt");
+
+                                System.out.println("File: " + comprareport.getName());
+                                FileWriter compraWriter = new FileWriter(usuario + ".txt");
+                                compraWriter.write("Compra de: " + usuario + "\n");
+                                compraWriter.write("Itens da compra:\n");
+                                compraWriter.write(carrinho.produtos_carrinho.toString());
+                                compraWriter.write("\nValor total: " + valor_compra + " reais");
+                                compraWriter.write("\n============================================");
+                                compraWriter.close();
+                            } catch (IOException e) {
+                                System.out.println("An error occurred.");
+                                e.printStackTrace();
+                                break;
+                            }
+                            } else {
                             System.out.println("Compra cancelada");
                             break;
                         }
