@@ -15,7 +15,7 @@ Você pode logar como administrador (login admin / senha admin) ou criar seu pr�
 Opções
 --------------------------
 1 - Fazer compras  
-2 - Ver dados de outros usuários
+2 - Ver dados de outros usuários  
 3 - Trocar usuário  
 4 - Sobre  
 
