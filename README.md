@@ -1,5 +1,6 @@
 # MarketManager
 Um app de gerenciamento completo para um mercado pequeno  
+Feito para o curso de formação de talentos da PUC  
 Link da explicação da atividade no youtube: https://youtu.be/PNQkBmAuGwI
 
 Como usar
